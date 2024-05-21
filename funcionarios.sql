@@ -1,4 +1,4 @@
-CREATE TABLE CadastroFuncionarios (
+CREATE TABLE funcionarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     data_nascimento DATE NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE CadastroFuncionarios (
     email VARCHAR(100)
 );
 
-INSERT INTO CadastroFuncionarios (nome, data_nascimento, cpf, endereco, telefone, email)
+INSERT INTO funcionarios (nome, data_nascimento, cpf, endereco, telefone, email)
 VALUES 
 ('João Silva', '1985-03-15', '123.456.789-01', 'Rua das Flores, 123', '(11) 98765-4321', 'joao.silva@email.com'),
 ('Maria Souza', '1990-07-22', '987.654.321-02', 'Av. das Palmeiras, 456', '(21) 98765-1234', 'maria.souza@email.com'),
