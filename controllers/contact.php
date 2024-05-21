@@ -1,4 +1,4 @@
 <?php
-$heading = 'Contact Us';
+$heading = 'Contato';
 
 require_once 'views/contact.view.php';
