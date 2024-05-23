@@ -8,16 +8,18 @@ class Database {
     {
         $dsn = ('mysql:' . http_build_query($config, '', ';'));
 
-        $this->connection = new PDO($dsn, $username, $password,
-        [ PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ]
-        );
+        $this->connection = new PDO($dsn, $username, $password, [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]);
     }
 
-    public function query($query)
+    public function query($query, $params = []) 
     { 
         $ps = $this->connection->prepare($query);
-        $ps->execute();
 
-        return $ps->fetchAll(PDO::FETCH_ASSOC);
+        $ps->execute($params);
+    
+        return $ps;
     }
 }
