@@ -8,7 +8,7 @@ CREATE TABLE user (
 -- Criação da tabela `notes`
 CREATE TABLE notes (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    note VARCHAR(255) NOT NULL,
+    body VARCHAR(255) NOT NULL,
     user_id INT(11) NOT NULL,
     CONSTRAINT fk_user__notes_id FOREIGN KEY (user_id)
         REFERENCES user(id) ON UPDATE CASCADE ON DELETE CASCADE

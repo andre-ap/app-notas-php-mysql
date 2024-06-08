@@ -4,7 +4,7 @@ return $config = [
     'database' => [
         'host' => 'localhost',
         'port' => '3306',
-        'dbname' => 'empresa',
+        'dbname' => 'myapp',
         'charset' => 'utf8'
     ]
 ];
