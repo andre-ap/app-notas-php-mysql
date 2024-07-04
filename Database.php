@@ -1,10 +1,12 @@
 <?php
 
-class Database {
-    
-    public $connection;
+class Database
+{
 
-    public function __construct ($config, $username = 'root', $password = 'root')
+    public $connection;
+    public $ps;
+
+    public function __construct($config, $username = 'root', $password = 'root')
     {
         $dsn = ('mysql:' . http_build_query($config, '', ';'));
 
@@ -14,12 +16,32 @@ class Database {
         ]);
     }
 
-    public function query($query, $params = []) 
-    { 
-        $ps = $this->connection->prepare($query);
+    public function query($query, $params = [])
+    {
+        $this->ps = $this->connection->prepare($query);
 
-        $ps->execute($params);
-    
-        return $ps;
+        $this->ps->execute($params);
+
+        return $this;
+    }
+
+    public function get() {
+        return $this->ps->fetchAll();
+    }
+
+    public function find()
+    {
+        return $this->ps->fetch();
+    }
+
+    public function findOrFail()
+    {
+        $result = $this->find();
+
+        if (! $result) {
+            abort();
+        }
+
+        return $result;
     }
 }
