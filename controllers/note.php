@@ -3,7 +3,7 @@
 $config = require('config.php');
 $db = new Database($config['database']);
 
-$heading = 'Anotação';
+$heading = 'Notas';
 $currentUserId = 1;
 
 $note = $db->query('select * from notes where  id = :id', [
