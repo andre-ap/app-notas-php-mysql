@@ -1,21 +1,19 @@
-<?php 
+<?php
 
-$config = require('config.php');
+require 'Validator.php';
+
+$config = require 'config.php';
 $db = new Database($config['database']);
 
 
 $heading = 'Criar Nota';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $errros = [];
 
-    if (strlen($_POST['body']) === 0){
-        $errors['body'] = 'Uma mensagem de descrição é requerida.';
-    }
-
-    if (strlen($_POST['body']) > 1000){
-        $errors['body'] = 'A mensagem de descrição não pode ter mais de 1000 caracteres.';
+    if (! Validator::string($_POST['body'], 1, 1000)) {
+        $errors['body'] = 'Uma mensagem de descrição de até 1000 caracteres é requerida.';
     }
 
     if (empty($errors)) {
@@ -24,8 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             'user_id' => 1
         ]);
     }
-
-    
 }
 
 require 'views/note-create.view.php';
