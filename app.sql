@@ -1,6 +1,6 @@
-CREATE DATABASE noteApp;
+CREATE DATABASE noteapp;
 
-use noteApp;
+use noteapp;
 
 -- Criação da tabela `user`
 CREATE TABLE user (

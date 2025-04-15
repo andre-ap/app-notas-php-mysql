@@ -6,7 +6,7 @@ class Database
     public $connection;
     public $ps;
 
-    public function __construct($config, $username = 'root', $password = 'minhasenha')
+    public function __construct($config, $username = 'root', $password = 'root')
     {
         $dsn = ('mysql:' . http_build_query($config, '', ';'));
 
